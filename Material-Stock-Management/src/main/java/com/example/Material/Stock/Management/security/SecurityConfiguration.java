@@ -17,41 +17,6 @@ import javax.sql.DataSource;
 @Configuration
 public class SecurityConfiguration {
     //Authentication
-    //authentication with hard code users
-
-  /*  @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-        //creates two users with roles
-        UserDetails shankar = User.builder()
-                .username("shankar")
-                .password("{noop}123")
-                .roles("SITEINCHARGE")
-                .build();
-
-        UserDetails nikhil = User.builder()
-                .username("nikhil")
-                .password("{noop}456")
-                .roles("STOREINCHARGE")
-                .build();
-
-        //return the created users
-        return new InMemoryUserDetailsManager(shankar, nikhil);
-    }
-
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        // Configure security settings
-        http.authorizeRequests(config->
-                        //Authontication part identify users based on logging credentials
-                        config
-                                .antMatchers("/").hasAnyRole("SITEINCHARGE","STOREINCHARGE")
-                                .antMatchers("/siteincharge").hasRole("SITEINCHARGE")
-                                .antMatchers("/storeincharge").hasRole("STOREINCHARGE")
-                                .anyRequest().authenticated())
-                // Configure form-based login
-                .formLogin(Customizer.withDefaults());
-        return http.build();
-    }  */
 
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){
