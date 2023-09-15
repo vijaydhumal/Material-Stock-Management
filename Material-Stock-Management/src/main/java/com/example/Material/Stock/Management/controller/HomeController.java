@@ -22,8 +22,8 @@ public class HomeController {
     }
 
     //Add Materials
-    @ResponseBody
     @PostMapping("/insertmaterial")
+    @ResponseBody
     public String addMaterials(Material material){
         service.addMaterial(material);
         return "Value Inserted Successfully";
@@ -32,7 +32,7 @@ public class HomeController {
     //Get All the Materials
     @GetMapping("/siteincharge")
     public String getAllMaterials(Model model){
-        model.addAttribute("materials",service.getAllMaterials());
+        model.addAttribute("material",service.getAvailableMaterials());
         return "siteincharge";
     }
 
@@ -45,7 +45,7 @@ public class HomeController {
     //Go to the storeincharge page
     @GetMapping("/storeincharge")
     public String getStoreInchargePage(Model model){
-        model.addAttribute("materials",service.getAllMaterials());
+        model.addAttribute("material",service.getAllMaterials());
         return "storeincharge";
     }
 
@@ -85,12 +85,24 @@ public class HomeController {
         return "Material Quantity Updated Successfully";
     }
 
-    //Approve the request
+    //Approve Material
     @ResponseBody
-    @PostMapping("/approve")
-    public String approveMaterial(MaterialRequest materialRequest){
-        service.approveMaterial(materialRequest);
-        return "Material Request Approved";
+    @GetMapping("/approvematerial/{id}")
+    public String callDemo1(@PathVariable int id) {
+        boolean isMaterialApproved = service.callDemo1Procedure(id);
+
+        if (isMaterialApproved) {
+            return "Material Request Approved";
+        }else {
+            return "Insufficient Quantity";
+        }
     }
+
+    @GetMapping("deletematerial/{id}")
+    public String deleteMaterial(@PathVariable(name = "id") int id){
+        service.deleteMaterial(id);
+        return "redirect:/storeincharge";
+    }
+
 
 }

@@ -16,11 +16,17 @@
       <th>Material Id</th>
       <th>Material Name</th>
       <th>Material Quantity</th>
+      <th>Material Unit</th>
+      <th>Actions</th>
     </tr>
     <tr th:each="material:${material}" >
       <td th:text="${material.mId}"></td>
       <td th:text="${material.mName}"></td>
       <td th:text="${material.mQuantity}"></td>
+      <td th:text="${material.unit}"></td>
+      <td>
+        <a th:href="@{/approvematerial/{id}(id=${material.mId})}"><button class="btn btn-success">Approve</button></a>
+      </td>
     </tr>
   </table>
 </div>

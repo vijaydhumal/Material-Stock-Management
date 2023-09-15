@@ -16,12 +16,14 @@
       <th>Material Id</th>
       <th>Material Name</th>
       <th>Material Quantity</th>
+      <th>Material Unit</th>
 
     </tr>
-    <tr th:each="material:${materials}" >
-      <td th:text="${material.materialId}"></td>
-      <td th:text="${material.materialName}"></td>
-      <td th:text="${material.materialQuantity}"></td>
+    <tr th:each="material:${material}" >
+      <td th:text="${material.materialId_}"></td>
+      <td th:text="${material.materialName_}"></td>
+      <td th:text="${material.materialQuantity_}"></td>
+      <td th:text="${material.materialUnit_}"></td>
     </tr>
   </table>
 </div>
