@@ -111,13 +111,4 @@ public class MaterialService {
         repository.deleteById(id);
     }
 
-    // approve materials
-    public void approveMaterial(MaterialRequest materialRequest) {
-        Material material = repository.findById(materialRequest.getMId()).get();
-        int requestedQuantity = materialRequest.getMQuantity();
-        int updatedQuantity = material.getMaterialQuantity() - requestedQuantity;
-        material.setMaterialQuantity(updatedQuantity);
-        repository.save(material);
-    }
-
 }
